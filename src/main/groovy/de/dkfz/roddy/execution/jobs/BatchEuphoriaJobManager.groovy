@@ -97,6 +97,10 @@ abstract class BatchEuphoriaJobManager<C extends Command> {
 
     BEJobResult submitJob(BEJob job) throws TimeoutException {
         Command command = createCommand(job)
+
+        println "****************"
+        println command.toString()
+        println "****************"
         ExecutionResult executionResult = executionService.execute(command)
         extractAndSetJobResultFromExecutionResult(command, executionResult)
         addToListOfStartedJobs(job)
